@@ -55,15 +55,15 @@ class LoginScreen extends GetView<LoginScreenController> {
                       child: Lottie.asset("assets/icons/Animation - 1735810754821.json",
                       height: 100,
                       fit: BoxFit.fill)),
-                    Positioned(
-                      right: 27,
-                      bottom: 0,
-                      //left: 20,
-                      child: Lottie.asset(
-                        'assets/icons/Animation - 1735809492231.json', // Replace with your character image path
-                        height: 180,
-                      ),
-                    ),
+                    // Positioned(
+                    //   right: 27,
+                    //   bottom: 0,
+                    //   //left: 20,
+                    //   child: Lottie.asset(
+                    //     'assets/icons/Animation - 1735809492231.json', // Replace with your character image path
+                    //     height: 180,
+                    //   ),
+                    // ),
                   ],
                 ),
 

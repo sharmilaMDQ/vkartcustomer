@@ -5,6 +5,7 @@ import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:vkartcustomer/Controller/AddNewAddressController.dart';
 import 'package:vkartcustomer/Controller/FavouriteStoreScreenController.dart';
 import 'package:vkartcustomer/Controller/order/order_controller.dart';
@@ -279,9 +280,19 @@ class _CheckOutScreenState extends State<CheckOutScreen>with SingleTickerProvide
                     textColor: Colors.white,
                   );
                 } else {
+               
                   // Proceed if validation is successful
-                  showBottomDialog(context);
+                  // if(controller.isLoading.isTrue){
+                  //  Future.delayed(Duration(milliseconds: 500),(){
+                  //     showBottomDialog(context);
+                  //  });
+                  // }else{
+
+                  // }
+                 
                   Helper.pickUPTime = controller.pickUptimeController.text;
+                                  
+                  showBottomDialog(context);
                 
                   // Call the API after a slight delay
                   Future.delayed(const Duration(milliseconds: 1500), () {
@@ -429,9 +440,7 @@ class _CheckOutScreenState extends State<CheckOutScreen>with SingleTickerProvide
                           ),
                         ),
                         Row(
-                          children: [
-                    
-                    
+                          children: [ 
                             Expanded(
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
@@ -945,23 +954,35 @@ class _CheckOutScreenState extends State<CheckOutScreen>with SingleTickerProvide
   }
 
 
-  void showBottomDialog(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      builder: (BuildContext context) {
-        return Container(
-          padding: EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Image.asset('assets/images/order_placed_confirm.jpg')
+void showBottomDialog(BuildContext context) {
+  showModalBottomSheet(
+    backgroundColor: Colors.transparent,
+    context: context,
+    builder: (BuildContext context) {
+      return Container(
+        color: Colors.white,
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Lottie.asset("assets/icons/Animation - 1735975481641.json"),
+            SizedBox(height: 16.0), // Add some spacing between the animation and the text
+            Text(
+              "Your Order Successfuly Placed!",
+              style: TextStyle(
+                fontSize: 16.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+      );
+    },
+  );
+}
 
-            ],
-          ),
-        );
-      },
-    );
-  }
 
   // String totalAmount (var productPrice,var discount,var deliveryFee,var promoDiscount){
 
